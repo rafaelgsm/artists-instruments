@@ -101,10 +101,26 @@ const typeDefs = gql`
     lastName: String!
   }
 
+  type Instrument {
+    id: String!
+    year: String!
+    brand: String!
+    type: String!
+    price: String!
+    artistId: String!
+  }
+
+  type ArtistWithInstrument {
+    id: String!
+    firstName: String!
+    lastName: String!
+    instruments: [Instrument]
+  }
+
   type Query {
     artists: [Artist]
 
-    artistWithInstruments(id: String!): Artist
+    artistWithInstruments(id: String!): ArtistWithInstrument
   }
 
   type Mutation {
@@ -119,9 +135,17 @@ const resolvers = {
     artists: () => artists,
 
     artistWithInstruments: (root, args) => {
-      return artists.find(item => {
+      var artist = artists.find(item => {
         return item.id === args.id;
       });
+
+      var i = instruments.filter(item => {
+        return item.artistId === args.id;
+      });
+
+      artist.instruments = i;
+
+      return artist;
     }
     //...
   },

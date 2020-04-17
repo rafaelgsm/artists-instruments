@@ -16,6 +16,14 @@ export const GET_ARTIST = gql`
       id
       firstName
       lastName
+      instruments {
+        id
+        year
+        brand
+        type
+        price
+        artistId
+      }
     }
   }
 `;

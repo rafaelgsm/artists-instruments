@@ -43,6 +43,8 @@ const ArtistDetail = () => {
 
   const { firstName, lastName } = data.artistWithInstruments;
 
+  console.log(data);
+
   return (
     <div>
       <Artist
