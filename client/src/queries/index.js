@@ -57,3 +57,16 @@ export const REMOVE_ARTIST = gql`
     }
   }
 `;
+
+export const GET_INSTRUMENTS = gql`
+  {
+    instruments {
+      id
+      year
+      brand
+      type
+      price
+      artistId
+    }
+  }
+`;

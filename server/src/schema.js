@@ -120,6 +120,8 @@ const typeDefs = gql`
   type Query {
     artists: [Artist]
 
+    instruments: [Instrument]
+
     artistWithInstruments(id: String!): ArtistWithInstrument
   }
 
@@ -133,6 +135,8 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     artists: () => artists,
+
+    instruments: () => instruments,
 
     artistWithInstruments: (root, args) => {
       var artist = artists.find(item => {
